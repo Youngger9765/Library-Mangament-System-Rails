@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	width: 100vw;
+	overflow: hidden;
+	background-image: url(background2.jpg);
+}
+
+#loginbox {
+	padding: 20px;
+	margin: 12% auto;
+	width: 60%;
+	background-color: rgba(249,249,249,0.9);
+	position: relative;
+	height: 50%;
+	color: #000;
+}
+
+#adminloginredirect {
+	position: absolute;
+	bottom: 0px;
+	right: 15px;
+	color: #000;
+}

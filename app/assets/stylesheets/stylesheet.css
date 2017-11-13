@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family: 'Barlow Semi Condensed';
+	src: url(fonts/BarlowSemiCondensed-Regular.ttf);
+}
+
+@font-face {
+	font-family: 'Spectral SC';
+	src: url(fonts/SpectralSC-Regular.ttf);
+}
+
+body {
+	margin: 0;
+}
+
+p {
+	font-family: 'Barlow Semi Condensed', serif;
+}
+
+h2 {
+	font-family: 'Spectral SC', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+#navbar {
+	background-color: #000;
+	height: 70px;
+	width: 100vw;
+	position: absolute;
+	z-index: 100;
+	top: 0;
+	transition: transform 1s ease-in-out;
+}
+
+#nav.hidden {
+	transform: translateY(100%);
+}
+
+#title {
+	font-family: 'Spectral SC', sans-serif;
+	padding: 10px;
+	margin: 0 0 10px 10px;
+	position: absolute;
+	font-size: 36px;
+	color: #FFF;	
+}
