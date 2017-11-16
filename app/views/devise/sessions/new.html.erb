@@ -6,7 +6,7 @@
     
       <div id = "login">
 
-        <h2>Log in</h2>
+        <h2>Member log in</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
@@ -36,7 +36,7 @@
     </div>
 
     <div style = "position: absolute; bottom: 0px; right: 15px; color: #000;">
-      <p>Admin? Click here to log in.</p>        
+      <p>Admin? Click <%= link_to "here", controller: "admins", action: "login" %> to log in.</p>        
     </div>
 
   </div>

@@ -52,3 +52,21 @@ a {
 	font-size: 36px;
 	color: #FFF;	
 }
+
+#menubutton {
+	background-color: #0D47A1;
+	color: #BBDEFB;
+	width: 250px;
+	height: 250px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 20px;
+	border-radius: 8px;
+	cursor: pointer;
+	font-family: 'Spectral SC', sans-serif;
+}
+
+#menubutton:hover {
+	background-color: #4e79ba;
+}
