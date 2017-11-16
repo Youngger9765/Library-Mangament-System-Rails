@@ -1,0 +1,18 @@
+<h2> Profile </h2>
+
+<h3> Name: <%= @admin.name if @admin.name %></h3>
+<h3> Email: <%= @admin.email if @admin.email %></h3>
+
+<h4> Members: </h4>
+<table class= "table">
+	<tbody>
+		<%= @users.each do |user| %>
+		<tr>
+			<td><%= user.name %></td>
+			<td><%= user.books %></td>
+			<td><%= user.money %></td>
+			<td><%= button_to "Fine", fine_path(id: user.id), :class => "button small", :method => :patch %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
