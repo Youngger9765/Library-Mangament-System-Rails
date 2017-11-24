@@ -1,0 +1,17 @@
+<h2> Profile </h2>
+
+<h3> Name: <%= @user.name if @user.name %></h3>
+<h3> Email: <%= @user.email if @user.email %></h3>
+
+<h4> Books currently borrowed: </h4>
+<table class= "table">
+	<tbody>
+		<%= @user.books.each do |book| %>
+		<tr>
+			<td><%= book.name %></td>
+			<td><%= book.author %></td>
+			<td><%= button_to "Return", return_path(id: book.id), :class => "button small", :method => :patch %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
