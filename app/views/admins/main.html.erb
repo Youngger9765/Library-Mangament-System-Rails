@@ -19,4 +19,6 @@
 		</tr>
 		<% end %>
 	</tbody>
+<%= button_to "Add new book", new_book_path, :class => "button medium", :method => :get %>
+<%= button_to "Delete book", book_delete_path, :class => "button medium", :method => :get %>
 </table>

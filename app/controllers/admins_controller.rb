@@ -9,6 +9,7 @@ class AdminsController < ApplicationController
 		@admin = Admin.find(params[:id])
 		@books = Book.all
 		@users = User.all
+		redirect_to admin_main_path(@admin.id)
 	end
 
 	def new
