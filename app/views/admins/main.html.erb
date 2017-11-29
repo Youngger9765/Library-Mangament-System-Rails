@@ -7,7 +7,9 @@
 	<tbody>
 		<%= @users.each do |user| %>
 		<tr>
-			<td><%= user.books %></td>
+			<td><%= user.email %></td>
+			<td><%= user.balance %></td>
+			<td><%= button_to "Fine $10!", admins_fine_path(id: user), :class => "button medium", :method => :patch %><td>		
 		</tr>
 		<% end %>
 	</tbody>

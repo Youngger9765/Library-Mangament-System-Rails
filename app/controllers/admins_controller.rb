@@ -4,4 +4,10 @@ class AdminsController < ApplicationController
 		@admin = current_admin
 		@users = User.all
 	end	
+	def fine
+		@user = User.find(params[:id])
+		@user.balance = @user.balance - 10
+		@user.save
+		redirect_to admins_main_path(current_admin)
+	end
 end

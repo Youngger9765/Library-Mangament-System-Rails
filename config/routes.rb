@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   # authenticated :admin do
   #   root 'admins#main', as: :authenticated_root
   # end
+  patch 'admins/fine', to: 'admins#fine'
+  get 'admins/fine', to:'admins#fine'
   get '/books/show', to: 'books#show'
   get '/books/issue', to: 'books#issue'
   get '/users/main', to: 'users#main'
