@@ -1,6 +1,6 @@
-<div id = 'logintitle'><h2>Log in</h2></div>
+<div id = 'logintitle'><h2><%= resource_name %> log in</h2></div>
 
-<div id = 'container' style = "margin:4% auto !important;">
+<div id = 'container'>
 
 <div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>

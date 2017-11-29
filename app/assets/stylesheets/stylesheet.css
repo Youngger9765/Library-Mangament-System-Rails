@@ -33,17 +33,20 @@ a {
 
 #container {
 	padding: 20px;
-	margin: 12% auto;
-	width: 60%;
+	font-family: 'Barlow Semi Condensed';
 	background-color: rgba(249,249,249, 0.8);
-	position: relative;
-	height: 60%;
+	position: absolute;
+	height: 300px;
+	width: 800px;
 	color: #000;
 	border-radius: 2px;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -400px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-family: 'Barlow Semi Condensed'
 }
 
 /* NAVBAR */
@@ -98,7 +101,7 @@ a {
 #logintitle {
 	color: #FFF;
 	position: relative;
-	top: 100px;
+	top: 90px;
 	padding: 20px;
 	margin: 0 auto;
 	text-align: center;
