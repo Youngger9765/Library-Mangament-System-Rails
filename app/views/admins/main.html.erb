@@ -1,4 +1,6 @@
-<h2> Profile </h2>
+<h2 id="pagetitle"> Profile </h2>
+
+<div id = 'container'>
 
 <h3> Email: <%= @admin.email if @admin.email %></h3>
 
@@ -16,6 +18,8 @@
 </table>
 <%= button_to "Add new book", new_book_path, :class => "button medium", :method => :get %>
 <%= button_to "Delete book", books_deleteshow_path, :class => "button medium", :method => :get %>
+
+<div id = 'sharedlinks'>
 <% if admin_signed_in? %>
   <li>
   <%= link_to('Logout', destroy_admin_session_path, method: :delete) %>        
@@ -25,3 +29,6 @@
   <%= link_to('Login', new_admin_session_path)  %>  
   </li>
 <% end %>
+</div>
+
+</td>
