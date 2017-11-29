@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20171129013937) do
     t.string "title"
     t.string "author"
     t.string "genre"
-    t.integer "year"
     t.integer "no_copies"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

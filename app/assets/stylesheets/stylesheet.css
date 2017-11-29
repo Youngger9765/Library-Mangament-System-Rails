@@ -3,18 +3,19 @@
 
 @font-face {
 	font-family: 'Barlow Semi Condensed';
-	src: url(fonts/BarlowSemiCondensed-Regular.ttf);
+	src: url(BarlowSemiCondensed-Regular.ttf);
 }
 
 @font-face {
 	font-family: 'Spectral SC';
-	src: url(fonts/SpectralSC-Regular.ttf);
+	src: url(SpectralSC-Regular.ttf);
 }
 
 body {
 	margin: 0;
 	width: 100vw;
 	overflow-x: hidden;
+	background-image: url(background2.jpg);
 }
 
 p {
@@ -29,6 +30,8 @@ a {
   color: inherit;
   text-decoration: inherit;
 }
+
+/* NAVBAR */
 
 #navbar {
 	background-color: #000;
@@ -50,23 +53,29 @@ a {
 	margin: 0 0 10px 10px;
 	position: absolute;
 	font-size: 36px;
-	color: #FFF;	
+	color: #FFF;
+	cursor: pointer;
 }
 
+/* HOMEPAGE */
+
 #menubutton {
-	background-color: #0D47A1;
-	color: #BBDEFB;
+	background-color: #7f0000;
+	color: #d7ccc8;
 	width: 250px;
 	height: 250px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	margin: 20px;
-	border-radius: 8px;
+	border-radius: 6px;
 	cursor: pointer;
 	font-family: 'Spectral SC', sans-serif;
+	transition: background-color 0.5s ease;
 }
 
 #menubutton:hover {
-	background-color: #4e79ba;
+	background-color: #964446;
 }
+
+/* LOGIN PAGE */
