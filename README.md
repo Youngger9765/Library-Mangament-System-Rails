@@ -1,5 +1,7 @@
 # README
 
+Ruby on Rails Decal Final Project
+
 Title: eLib
 
 Team Members: Yash Agarwul, Shoumma Shams, Aman Sidhant
