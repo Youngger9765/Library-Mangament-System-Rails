@@ -11,13 +11,12 @@ Rails.application.routes.draw do
   patch '/issue/:id', to: "books#issue",as: 'issue'
   get '/return', to: 'books#return'
   patch '/return', to: "books#return"
-  #authenticated :user do
-  #  root 'users#main', as: :authenticated_root
-  #end
-  #authenticated :admins do
-  #  root 'admins#main'
-    #as: :authenticated_root
-  #end
+  # authenticated :user do
+  #   root 'users#main', as: :authenticated_root
+  # end
+  # authenticated :admin do
+  #   root 'admins#main', as: :authenticated_root
+  # end
   get '/books/show', to: 'books#show'
   get '/books/issue', to: 'books#issue'
   get '/users/main', to: 'users#main'
@@ -25,5 +24,6 @@ Rails.application.routes.draw do
   get '/books/new', to:"books#new", as: "new_book"
   post '/books', to: "books#create" , as: "books"
   patch '/delete', to: "books#delete"
+  get '/books/deleteshow', to: "books#deleteshow"
   get '/books/delete', to: 'books#delete'
 end

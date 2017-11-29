@@ -1,10 +1,7 @@
-  <% content_for :login do %>
-    <%= stylesheet_link_tag "login" %>
-  <% end %>
+
 
 <h2> Profile </h2>
 
-<h3> Name: <%= @admin.name if @admin.name %></h3>
 <h3> Email: <%= @admin.email if @admin.email %></h3>
 
 <h4> Members: </h4>
@@ -12,13 +9,19 @@
 	<tbody>
 		<%= @users.each do |user| %>
 		<tr>
-			<td><%= user.name %></td>
 			<td><%= user.books %></td>
-			<td><%= user.money %></td>
-			<td><%= button_to "Fine", fine_path(id: user.id), :class => "button small", :method => :patch %></td>
 		</tr>
 		<% end %>
 	</tbody>
-<%= button_to "Add new book", new_book_path, :class => "button medium", :method => :get %>
-<%= button_to "Delete book", book_delete_path, :class => "button medium", :method => :get %>
 </table>
+<%= button_to "Add new book", new_book_path, :class => "button medium", :method => :get %>
+<%= button_to "Delete book", books_deleteshow_path, :class => "button medium", :method => :get %>
+<% if admin_signed_in? %>
+  <li>
+  <%= link_to('Logout', destroy_admin_session_path, method: :delete) %>        
+  </li>
+<% else %>
+  <li>
+  <%= link_to('Login', new_admin_session_path)  %>  
+  </li>
+<% end %>

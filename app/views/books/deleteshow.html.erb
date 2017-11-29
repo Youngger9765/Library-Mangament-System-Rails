@@ -6,7 +6,7 @@
 	<%= book.year %>
 	<%= book.no_copies %>
 	<%= book.avail_for_issue %>
-	<%= button_to "Issue Book", issue_path(id: book), :class => "button medium", :method => :patch %>
+	<%= button_to "Delete Book", delete_path(id: book), :class => "button medium", :method => :patch %>
 <% end %>
 </p>
 </p></div>
