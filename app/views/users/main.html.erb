@@ -1,13 +1,12 @@
 <h2 id="pagetitle"> Profile </h2>
 
-<div id = 'container'>
-
+<div id = 'maincontainer'>
 <h3> Email: <%= @user.email if @user.email %></h3>
 
 <h4> Books currently borrowed: </h4>
 <table class= "table">
 	<tbody>
-		<%= @user.books.each do |book| %>
+		<% @user.books.each do |book| %>
 		<tr>
 			<td><%= book.title %></td>
 			<td><%= book.author %></td>
