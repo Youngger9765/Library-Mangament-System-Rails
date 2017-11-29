@@ -1,6 +1,4 @@
-<div id = "maincontainer">
-
-<div id="show" style="overflow:scroll; height:800px;">
+<div id = "maincontainer" style = "height: auto;">
 <p><% @books.each do |book| %><p>
 	<%= book.title %>
 	<%= book.author %>
@@ -10,7 +8,5 @@
 	<%= book.avail_for_issue %>
 	<%= button_to "Delete Book", delete_path(id: book), :class => "button medium", :method => :patch %>
 <% end %>
-</p>
-</p></div>
 
 </div>
