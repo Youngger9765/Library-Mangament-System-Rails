@@ -92,7 +92,7 @@ a {
 	background-color: #964446;
 }
 
-/* LOGIN PAGE */
+/* LOGIN & REGISTRATION PAGES */
 
 #logintitle {
 	color: #FFF;
@@ -101,6 +101,7 @@ a {
 	padding: 20px;
 	margin: 0 auto;
 	text-align: center;
+	cursor: default;
 }
 
 #sharedlinks {

@@ -1,5 +1,8 @@
-<h2>Forgot your password?</h2>
+<div id = 'logintitle'><h2>Forgot your password?</h2></div>
 
+<div id = 'container' style = "margin:4% auto !important;">
+
+  <div>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= devise_error_messages! %>
 
@@ -13,4 +16,10 @@
   </div>
 <% end %>
 
+<div id = "sharedlinks">
 <%= render "devise/shared/links" %>
+</div>
+
+</div>
+
+</div>
