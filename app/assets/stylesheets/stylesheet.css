@@ -19,16 +19,30 @@ body {
 }
 
 p {
-	font-family: 'Barlow Semi Condensed', serif;
+	font-family: 'Barlow Semi Condensed', sans-serif;
 }
 
 h2 {
-	font-family: 'Spectral SC', sans-serif;
+	font-family: 'Spectral SC', serif;
 }
 
 a {
   color: inherit;
   text-decoration: inherit;
+}
+
+#container {
+	padding: 20px;
+	margin: 12% auto;
+	width: 60%;
+	background-color: rgba(249,249,249, 0.8);
+	position: relative;
+	height: 100%;
+	color: #000;
+	border-radius: 2px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /* NAVBAR */
@@ -79,3 +93,8 @@ a {
 }
 
 /* LOGIN PAGE */
+
+#logintitle {
+	color: #FFF;
+
+}
