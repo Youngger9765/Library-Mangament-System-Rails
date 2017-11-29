@@ -18,7 +18,7 @@ body {
 	background-image: url(background2.jpg);
 }
 
-p {
+p, h3, h4 {
 	font-family: 'Barlow Semi Condensed', sans-serif;
 }
 
@@ -112,4 +112,23 @@ a {
 	color: #7f0000;
 	margin-top: 15px;
 	padding: 3px;
+}
+
+/* MAIN PAGES */
+
+#maincontainer {
+	padding: 20px;
+	font-family: 'Barlow Semi Condensed';
+	background-color: rgba(249,249,249, 0.8);
+	position: absolute;
+	height: 300px;
+	width: 800px;
+	color: #000;
+	border-radius: 2px;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -400px;
+	align-items: center;
+	justify-content: center;
 }

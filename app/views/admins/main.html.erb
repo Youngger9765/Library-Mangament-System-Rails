@@ -1,13 +1,13 @@
 <h2 id="pagetitle"> Profile </h2>
 
-<div id = 'container'>
+<div id = 'maincontainer'>
 
 <h3> Email: <%= @admin.email if @admin.email %></h3>
 
 <h4> Members: </h4>
 <table class= "table">
 	<tbody>
-		<%= @users.each do |user| %>
+		<% @users.each do |user| %>
 		<tr>
 			<td><%= user.email %></td>
 			<td><%= user.balance %></td>
@@ -31,4 +31,4 @@
 <% end %>
 </div>
 
-</td>
+</div>
