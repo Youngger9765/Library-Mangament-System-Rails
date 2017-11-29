@@ -49,6 +49,14 @@ a {
 	justify-content: center;
 }
 
+input[type=submit] {
+	font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+button {
+	font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
 /* NAVBAR */
 
 #navbar {
