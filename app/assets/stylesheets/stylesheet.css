@@ -96,5 +96,15 @@ a {
 
 #logintitle {
 	color: #FFF;
+	position: relative;
+	top: 100px;
+	padding: 20px;
+	margin: 0 auto;
+	text-align: center;
+}
 
+#sharedlinks {
+	color: #7f0000;
+	margin-top: 15px;
+	padding: 3px;
 }
