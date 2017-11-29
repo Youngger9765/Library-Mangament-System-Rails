@@ -8,21 +8,21 @@ Team Members: Yash Agarwal, Shoumma Shams, Aman Sidhant
 
 Idea: 
 
-Online eBook library where members can borrow an eBook for a period of time, and admins can monitor and fine members.
+Online eBook library where members can borrow an eBook, and admins can handle books and fine members.
 
 
 Models & Description: 
 
 	•	Books
 
-		o	Has title, author, year, genre, number of copies and whether it is available for issue
-		o	The associaiton is it has and belongs to users
+		o	Has title, author, year, genre, number of copies, and whether it is available for issue
+		o	The associations are that it has and belongs to users
 
 	•	Users
 
-		o	Has email, password and balance
+		o	Has email, password, and balance
 		o	Has amount of money attributed to them to be deducted for fines
-		o 	The association is it has and belongs to books
+		o 	The associations are that it has and belongs to books
 
 	•	Admins
 
@@ -32,12 +32,11 @@ Models & Description:
 
 Features:
 
-	•	Admins and userss can log in
-	•	Members can issue and return books
-	•	Members can register
+	•	Admins and users can log in
+	•	Users can issue and return books
+	•	Users can register
 	•	Admins can check what books are borrowed, what books a member has, and can fine members for overdue books
-	ster (admin is pre-set)
-	•	Admins can add books to the libraries and remove books to the libraries.
+	•	Admins can add and remove books from the library.
 
 
 Division of Labour:
