@@ -16,6 +16,9 @@
 		<% end %>
 	</tbody>
 </table>
+
+<%= button_to 'all_books', :controller => 'books', :action => 'index'%>
+
 <%= button_to "Add new book", new_book_path, :class => "button medium", :method => :get %>
 <%= button_to "Delete book", books_deleteshow_path, :class => "button medium", :method => :get %>
 

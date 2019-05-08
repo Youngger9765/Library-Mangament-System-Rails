@@ -1,4 +1,3 @@
-<div id = "maincontainer2">
 <p><% @books.each do |book| %><p>
 	<%= book.title %>
 	<%= book.author %>
@@ -7,4 +6,3 @@
 	<%= book.avail_for_issue %>
 	<%= button_to "Issue Book", issue_path(id: book), :class => "button medium", :method => :patch %>
 <% end %>
-</div>

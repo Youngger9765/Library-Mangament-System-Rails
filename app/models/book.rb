@@ -1,3 +1,10 @@
 class Book < ApplicationRecord
-	has_and_belongs_to_many :users
+	has_many :user_book_ships
+	has_many :users, through: :user_book_ships
+
+	# has_many :issue_logs
+	# has_many :users, through: :issue_logs
+
+
+  
 end

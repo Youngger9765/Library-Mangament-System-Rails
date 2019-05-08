@@ -3,7 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_and_belongs_to_many :books
+  has_many :user_book_ships
+  has_many :books, through: :user_book_ships
+
+  # has_many :issue_logs
+  # has_many :books, through: :issue_logs
+  
+  
   after_initialize :set_defaults, unless: :persisted?
   def set_defaults
     self.balance ||= 100

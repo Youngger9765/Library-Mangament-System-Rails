@@ -1,0 +1,38 @@
+
+<div>
+    <%= link_to new_book_path, :class=>"btn btn-warning " do%>
+        <p>新增書籍</p>
+    <%end%>
+</div>	
+
+<table id="example" class="table table-striped">
+    <thead>
+        <tr>
+            <th>書名</th>	
+        </tr>
+    </thead>
+    <tbody>
+        
+        <% @books.each do |book| %>
+            <tr>
+                <td>
+                    <%= book.title %>
+                </td>
+                <td>
+                    <%= button_to 'Show', :controller => 'books', :action => 'show', :id => book, :class=>"btn" %>
+                </td>
+            </tr>				
+        <% end %>
+    </tbody>
+</table>
+
+
+<div class="pull-right">
+    <%= paginate @books  %>
+</div>
+
+
+
+
+
+
