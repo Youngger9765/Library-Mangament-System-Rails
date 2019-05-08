@@ -3,7 +3,7 @@
 <div id = 'maincontainer'>
 <h3> Email: <%= @user.email if @user.email %></h3>
 
-<h4> Books currently borrowed: </h4>
+<h4> 已經借了：</h4>
 <table class= "table">
 	<tbody>
 		<% @user.books.each do |book| %>
