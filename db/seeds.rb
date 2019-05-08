@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Book.create([{title: 'Kite Runner', author: 'Khaled Housseini' ,genre: 'Drama' , year: '2003' ,no_copies: '2', avail_for_issue: true},
+Book.create([{title: 'Kite Runner', author: 'Khaled Housseini' ,genre: 'Drama' ,no_copies: '2', avail_for_issue: true},
 			 {title: 'A Thousand Splendid Suns', author: 'Khaled Housseini' ,genre: 'Fiction' , year: '2007' ,no_copies: '3', avail_for_issue: true},
 			 {title: 'And the Mountains Echoed', author: 'Khaled Housseini' ,genre: 'Fiction' , year: '2013' ,no_copies: '2', avail_for_issue: true},
 			 {title: 'Only Time will tell', author: 'Jefferey Archer' ,genre: 'Fiction' , year: '2011' ,no_copies: '2', avail_for_issue: true},
