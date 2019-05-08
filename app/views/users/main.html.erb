@@ -10,23 +10,13 @@
 		<tr>
 			<td><%= book.title %></td>
 			<td><%= book.author %></td>
-			<td><%= button_to "Return", return_path(id: book), :class => "button small", :method => :patch %></td>
+			<td><%= button_to "還書", return_path(id: book), :class => "button btn-warning", :method => :patch %></td>
 		</tr>
 		<% end %>
 	</tbody>
 
 </table>
-<%= button_to "Issue Books", books_show_path, :class => "button medium", :method => :get %>
+<%= button_to "借書", books_show_path, :class => "button btn-success", :method => :get %>
 
-<div id = 'sharedlinks'>
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-<% end %>
-</div>
+
 </div>

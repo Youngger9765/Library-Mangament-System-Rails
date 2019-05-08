@@ -5,7 +5,7 @@ class BooksController < ApplicationController
 	end
 	
 	def show
-    	@books = Book.all
+    	@books = Book.page(params[:page]).per(10)
   	end
 	
 	def issue

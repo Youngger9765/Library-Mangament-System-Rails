@@ -16,6 +16,18 @@
     
       <div id = "title"><%= link_to_unless_current("eLib", root_path) %></div>
 
+      <div id = 'sharedlinks' class='pull-right'>
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+          </li>
+        <% else %>
+          <li>
+          <%= link_to('Login', new_user_session_path)  %>  
+          </li>
+        <% end %>
+      </div>
+
   	</div>
     <div id = "maincontainer2">
         <%= yield %>
