@@ -15,9 +15,5 @@ test:
   password:
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  database: LMS
-  host: localhost
-  username: root
-  password:
+  adapter: postgresql
+  encoding: unicode
