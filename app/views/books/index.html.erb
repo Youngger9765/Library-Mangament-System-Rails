@@ -1,9 +1,9 @@
+<%= search_form_for @q do |f| %>
+    <%= f.label :title_cont %>
+    <%= f.search_field :title_cont %>
+    <%= f.submit %>
+<% end %>
 
-<div>
-    <%= link_to new_book_path, :class=>"btn btn-warning " do%>
-        <p>新增書籍</p>
-    <%end%>
-</div>	
 
 <table id="example" class="table table-striped">
     <thead>

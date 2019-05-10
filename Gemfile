@@ -44,6 +44,8 @@ gem 'rails_admin', '~> 1.2'
 gem 'bootstrap-modal-rails'
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin_rollincode', '~> 1.0'
+gem 'ransack'
+
 
 
 group :development, :test do

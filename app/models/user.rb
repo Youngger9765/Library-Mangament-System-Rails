@@ -8,10 +8,15 @@ class User < ApplicationRecord
 
   # has_many :issue_logs
   # has_many :books, through: :issue_logs
-  
-  
+
   after_initialize :set_defaults, unless: :persisted?
+
   def set_defaults
     self.balance ||= 100
+  end
+
+  def is_admin?
+    self.role == "admin"
+
   end
 end

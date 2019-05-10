@@ -1,11 +1,14 @@
 class BooksController < ApplicationController
 	
 	def	index
-		@books = Book.page(params[:page]).per(10)
+		@q = Book.ransack(params[:q])
+		@books = @q.result(distinct: true)
+		@books = @books.page(params[:page]).per(10) 
+
 	end
 	
 	def show
-    	@books = Book.page(params[:page]).per(10)
+		@book =  Book.find(params[:id])
   	end
 	
 	def issue
