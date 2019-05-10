@@ -14,7 +14,7 @@
 				<%if current_user.books.ids.include?(@book.id)%>
 					<div class="btn btn-primary">已借</div>
 				<%else%>
-					<%= link_to books_path(id: @book), :class => "btn btn-success", :method => :patch do%>
+					<%= link_to books_issue_path(id: @book), :class => "btn btn-success",:method => :patch do%>
 						借書
 					<%end%>
 				<%end%>
