@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   def domain_check
     unless APPROVED_DOMAINS.any? { |word| email.end_with?(word)}
-      errors.add(:email, "is not from a valid domain")
+      errors.add(:email, "domain only: junyiacademy.org")
     end
   end
 
