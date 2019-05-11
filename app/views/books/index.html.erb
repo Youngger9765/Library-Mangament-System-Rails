@@ -1,9 +1,27 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">新書</div>
+        <ul>
+            <% Book.all.order(created_at: :DESC).limit(10).each do |book|%>
+                <li>
+                    <%= link_to book_path(book.id) do%>
+                        <%=book.title%>
+                    <%end%>
+                        
+                </li>
+            <%end%>
+        </ul>
+    </div>
+</div>
+
+
+
+
 <%= search_form_for @q do |f| %>
     <%= f.label :title_cont %>
     <%= f.search_field :title_cont %>
     <%= f.submit %>
 <% end %>
-
 
 <table id="example" class="table table-striped">
     <thead>
