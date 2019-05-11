@@ -1,5 +1,4 @@
 class PostController < ApplicationController
-	def new
-		raise
-	end
+	before_action :authenticate_user!
+
 end

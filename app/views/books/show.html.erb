@@ -14,7 +14,7 @@
 				<%if current_user.books.ids.include?(@book.id)%>
 					<div class="btn btn-primary">已借</div>
 				<%else%>
-					<%= link_to books_issue_path(id: @book), :class => "btn btn-success",:method => :patch do%>
+					<%= link_to book_issue_path(@book), :class => "btn btn-success",:method => :patch do%>
 						借書
 					<%end%>
 				<%end%>
@@ -37,7 +37,7 @@
 		</div><!-- /col-sm-12 -->
 	</div><!-- /row -->
 
-	<% @book.posts.each do |post|%>
+	<% @book.comments.each do |comment|%>
 		<div class="row">
 			<div class="col-sm-1">
 				<div class="thumbnail">
@@ -48,10 +48,10 @@
 			<div class="col-sm-5">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<strong><%=post.user.email%></strong> <span class="text-muted"><%=post.created_at%></span> <span class="pull-right">score:<%=post.score%> </span>
+						<strong><%=comment.user.email%></strong> <span class="text-muted"><%=comment.created_at%></span> <span class="pull-right">score: <%=comment.score%> </span>
 					</div>
 					<div class="panel-body">
-						<%=post.content%>
+						<%=comment.content%>
 					</div><!-- /panel-body -->
 				</div><!-- /panel panel-default -->
 			</div><!-- /col-sm-5 -->
@@ -59,7 +59,7 @@
 		</div><!-- /row -->
 	<%end%>
 
-	<%= form_for @new_post, url: {action: "new"} do |f| %>
+	<%= form_for @new_comment , :url => book_create_comment_path(@book), :method=> :GET do |f| %>
 		<div class="row">
 			<div class="col-sm-1">
 				<div class="thumbnail">
@@ -70,26 +70,20 @@
 			<div class="col-sm-5">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<strong><%=current_user.email%></strong> 
+						<strong><%=current_user.email%></strong>
 						<span class="pull-right">
-							score:<%= f.number_field :score %>
+							score: <%= f.number_field :score ,max:"5",min:"1"%>
 						</span>
 					</div>
 					<div class="panel-body">
-						<%= f.text_area :content %>
+						<%= f.text_area :content, style: ' width: 100%; height: 100px; display: block'%>
+						<br>
+						<%= f.submit "建立留言", :class=>"btn btn-primary pull-right"%>
 					</div><!-- /panel-body -->
-					<div class="pull-right">
-						<%= f.submit %>
-					</div>
 				</div><!-- /panel panel-default -->
-
 			</div><!-- /col-sm-5 -->
-
 		</div><!-- /row -->
-	    
 	<% end %>
-
-	
 
 </div><!-- /container -->
 

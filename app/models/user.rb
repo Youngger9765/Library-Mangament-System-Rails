@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :user_book_ships
   has_many :books, through: :user_book_ships
 
-  has_many :posts
+  has_many :comments
 
   # has_many :issue_logs
   # has_many :books, through: :issue_logs

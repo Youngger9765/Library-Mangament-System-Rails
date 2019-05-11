@@ -19,7 +19,9 @@
                     <%= book.title %>
                 </td>
                 <td>
-                    <%= button_to 'Show', :controller => 'books', :action => 'show', :id => book, :class=>"btn" %>
+                    <%= link_to book_path(book.id),  :class=>"btn btn-default" do %>
+                        show
+                    <%end%>
                 </td>
             </tr>				
         <% end %>

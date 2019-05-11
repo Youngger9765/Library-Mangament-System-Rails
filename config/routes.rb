@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/admins/new', to: 'admins#login'
   get '/users/new', to: 'users#new'
   get '/users/login', to:'users#login'
-  patch '/issue/:id', to: "books#issue",as: 'issue'
+  # patch '/issue/:id', to: "books#issue",as: 'issue'
   get '/return', to: 'books#return'
   patch '/return', to: "books#return"
   # authenticated :user do
@@ -21,17 +21,20 @@ Rails.application.routes.draw do
   # authenticated :admin do
   #   root 'admins#main', as: :authenticated_root
   # end
-  patch 'admins/fine', to: 'admins#fine'
-  get 'admins/fine', to:'admins#fine'
-  get '/books/show', to: 'books#show'
-  get '/books/issue', to: 'books#issue'
   get '/users/main', to: 'users#main'
-  get '/admins/main', to: 'admins#main'
-  get '/books/new', to:"books#new", as: "new_book"
-  post '/books', to: "books#create" , as: "books"
-  patch '/delete', to: "books#delete"
-  get '/books/deleteshow', to: "books#deleteshow"
-  get '/books/delete', to: 'books#delete'
+  # get '/books/show', to: 'books#show'
+  # get '/books/issue', to: 'books#issue'
+  # get '/admins/main', to: 'admins#main'
+  # get '/books/new', to:"books#new", as: "new_book"
+  # post '/books', to: "books#create" , as: "books"
+  # patch '/delete', to: "books#delete"
+  # get '/books/deleteshow', to: "books#deleteshow"
+  # get '/books/delete', to: 'books#delete'
 
-  match ':controller(/:action(/:id(.:format)))', :via => :all
+  resources :books do
+    get :create_comment
+    patch :issue
+  end
+
+  # match ':controller(/:action(/:id(.:format)))', :via => :all
 end

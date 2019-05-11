@@ -21,6 +21,6 @@ Book.create([
 	{title: 'A Thousand Splendid Suns', author: 'Khaled Housseini' ,genre: 'Fiction'  ,no_copies: '3', avail_for_issue: true},
 ])
 
-Post.create([
+Comment.create([
 	{user_id: 1, book_id: 1, content: "qwertertr", score: 3}
 ])

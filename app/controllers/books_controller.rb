@@ -1,19 +1,37 @@
 class BooksController < ApplicationController
-	
+
 	def	index
 		@q = Book.ransack(params[:q])
 		@books = @q.result(distinct: true)
-		@books = @books.page(params[:page]).per(10) 
+		@books = @books.page(params[:page]).per(10)
 
 	end
-	
+
 	def show
 		@book =  Book.find(params[:id])
-		@new_post =Post.new
+		@new_comment =Comment.new(:book_id => @book.id, :user_id => current_user.id)
   	end
-	
+
+  	def create_comment
+  		@book = Book.find(params[:book_id])
+  		@user = current_user
+  		content = params[:comment][:content]
+  		score = params[:comment][:score].to_i
+  		if score == 0
+  			score = nil
+  		end
+  		comment = @user.comments.new(
+  			:user_id => @user.id,
+  			:book_id => @book.id,
+  			:content => content,
+  			:score => score)
+  		comment.save
+
+  		redirect_to book_path(@book)
+  	end
+
 	def issue
-		@book = Book.find(params[:id])
+		@book = Book.find(params[:book_id])
 		if @book.avail_for_issue
 			UserBookShip.create(:user => current_user, :book => @book)
 			IssueLog.create(:user => current_user, :book => @book, :action => "借書")
@@ -25,8 +43,8 @@ class BooksController < ApplicationController
 			@book.save
 		end
 		redirect_to users_main_path
-	end	
-	
+	end
+
 	def return
 		@book = Book.find(params[:id])
 		ship = UserBookShip.find_by(:user_id => current_user.id, :book_id => @book.id)
