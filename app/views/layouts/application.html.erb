@@ -24,7 +24,7 @@
                         <p>館藏</p>
                     <%end%>
                 </li>
-                <%if current_user.is_admin?%>
+                <%if current_user && current_user.is_admin?%>
                     <li><a href="/admin">後台管理</a></li>
                 <%end%>
             </ul>

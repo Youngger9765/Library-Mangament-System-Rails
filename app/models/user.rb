@@ -8,6 +8,18 @@ class User < ApplicationRecord
 
   has_many :comments
 
+  validates :email, presence: true, if: :domain_check
+
+
+  APPROVED_DOMAINS = ["junyiacademy.org"]
+
+  def domain_check
+    unless APPROVED_DOMAINS.any? { |word| email.end_with?(word)}
+      errors.add(:email, "is not from a valid domain")
+    end
+  end
+
+
   # has_many :issue_logs
   # has_many :books, through: :issue_logs
 
