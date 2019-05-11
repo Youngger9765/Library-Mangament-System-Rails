@@ -9,6 +9,7 @@ class BooksController < ApplicationController
 	
 	def show
 		@book =  Book.find(params[:id])
+		@new_post =Post.new
   	end
 	
 	def issue

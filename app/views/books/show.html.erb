@@ -27,3 +27,69 @@
 	<img src="<%=@book.picture_url%>" alt="">
 </div>
 
+<br>
+<br>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h3>留言</h3>
+		</div><!-- /col-sm-12 -->
+	</div><!-- /row -->
+
+	<% @book.posts.each do |post|%>
+		<div class="row">
+			<div class="col-sm-1">
+				<div class="thumbnail">
+					<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+				</div><!-- /thumbnail -->
+			</div><!-- /col-sm-1 -->
+
+			<div class="col-sm-5">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<strong><%=post.user.email%></strong> <span class="text-muted"><%=post.created_at%></span> <span class="pull-right">score:<%=post.score%> </span>
+					</div>
+					<div class="panel-body">
+						<%=post.content%>
+					</div><!-- /panel-body -->
+				</div><!-- /panel panel-default -->
+			</div><!-- /col-sm-5 -->
+
+		</div><!-- /row -->
+	<%end%>
+
+	<%= form_for @new_post, url: {action: "new"} do |f| %>
+		<div class="row">
+			<div class="col-sm-1">
+				<div class="thumbnail">
+					<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+				</div><!-- /thumbnail -->
+			</div><!-- /col-sm-1 -->
+
+			<div class="col-sm-5">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<strong><%=current_user.email%></strong> 
+						<span class="pull-right">
+							score:<%= f.number_field :score %>
+						</span>
+					</div>
+					<div class="panel-body">
+						<%= f.text_area :content %>
+					</div><!-- /panel-body -->
+					<div class="pull-right">
+						<%= f.submit %>
+					</div>
+				</div><!-- /panel panel-default -->
+
+			</div><!-- /col-sm-5 -->
+
+		</div><!-- /row -->
+	    
+	<% end %>
+
+	
+
+</div><!-- /container -->
+
