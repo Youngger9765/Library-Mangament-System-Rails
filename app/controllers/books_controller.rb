@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 	def	index
 		@q = Book.ransack(params[:q])
 		@books = @q.result(distinct: true)
-		@books = @books.page(params[:page]).per(10)
+		@books = @books.page(params[:page]).per(30)
 
 	end
 
