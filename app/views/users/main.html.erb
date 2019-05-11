@@ -13,7 +13,13 @@
 					<%= book.title %>
 				<%end%>
 			</td>
-			<td><%= button_to "還書", return_path(id: book), :class => "button btn-warning", :method => :patch %></td>
+			<td>
+				<%= UserBookShip.find_by(:user_id=> @user.id, :book_id=>book.id).created_at.localtime%>
+			</td>
+			<td>
+				<%= button_to "還書", return_path(id: book), :class => "button btn-warning", :method => :patch %>
+				
+			</td>
 		</tr>
 		<% end %>
 	</tbody>
