@@ -15,19 +15,21 @@
 
     <nav class="navbar navbar-inverse clear" id = "navbar" >
         <div class="container-fluid">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <%= link_to_unless_current("個人借書", root_path) %>
-                </li>
-                <li>
-                    <%= link_to books_path, :method => :get do %>
-                        <p>館藏</p>
+            <% if user_signed_in? %>
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <%= link_to_unless_current("個人借書", root_path) %>
+                    </li>
+                    <li>
+                        <%= link_to books_path, :method => :get do %>
+                            <p>館藏</p>
+                        <%end%>
+                    </li>
+                    <%if current_user && current_user.is_admin?%>
+                        <li><a href="/admin">後台管理</a></li>
                     <%end%>
-                </li>
-                <%if current_user && current_user.is_admin?%>
-                    <li><a href="/admin">後台管理</a></li>
-                <%end%>
-            </ul>
+                </ul>
+            <%end%>
             <ul class="nav navbar-nav navbar-right">
                 <div id = 'sharedlinks' class='pull-right'>
                     <% if user_signed_in? %>
