@@ -17,7 +17,7 @@
             <% Book.order(issue_count: :DESC).limit(10).each do |book|%>
                 <li>
                     <%= link_to book_path(book.id) do%>
-                        <%=book.title%>
+                        <%=book.title%>（<%= book.issue_count%>）
                     <%end%>
                 </li>
             <%end%>
@@ -31,7 +31,7 @@
     <thead>
         <tr>
             <th>書名</th>
-            <th>借閱次數</th>
+            <th><%= sort_link(@q, :issue_count, '借閱次數') %></th>
             <th>
                 <%= search_form_for @q do |f| %>
                     <%= f.label :title_cont %>
