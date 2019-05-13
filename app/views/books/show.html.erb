@@ -1,3 +1,41 @@
+<style>
+	*{font-family:"Courier New", Courier, monospace}
+
+
+form p,
+form input[type="submit"] {
+  text-align: center;
+  font-size: 20px;
+}
+
+#wrapper form input[type="submit"] {
+  border: 1px solid #d9d9d9;
+  background-color: #efefef;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+  color: orange;
+}
+</style>
+
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -56,7 +94,16 @@
 			<div class="col-sm-5">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<strong><%=comment.user.name or comment.user.email%></strong> <span class="text-muted"><%=comment.created_at%></span> <span class="pull-right">score: <%=comment.score%> </span>
+						<strong><%=comment.user.name or comment.user.email%></strong> <span class="text-muted"><%=comment.created_at%></span> 
+						<span class="pull-right">
+							<% if comment.score.present?%>
+								<span style="color: orange;">
+									<% comment.score.to_i.times do%>
+										&#9733;
+									<%end%>
+								</span>
+							<%end%>
+						</span>
 					</div>
 					<div class="panel-body">
 						<%=comment.content%>
@@ -77,10 +124,28 @@
 
 			<div class="col-sm-5">
 				<div class="panel panel-default">
-					<div class="panel-heading">
+					<div class="panel-heading" id="stars-wrapper">
 						<strong><%=current_user.email%></strong>
 						<span class="pull-right">
-							score: <%= f.number_field :score ,max:"5",min:"1"%>
+						<%= f.number_field :score ,max:"5",min:"1", :class=>"rating hide"%>
+						
+							
+
+    <p class="clasificacion">
+       <input id="comment_content-1" type="radio" name="comment[content]" value="5"><!--
+      --><label for="comment_content-1">&#9733;</label><!--
+      --><input id="comment_content-2" type="radio" name="comment[content]" value="4"><!--
+      --><label for="comment_content-2">&#9733;</label><!--
+      --><input id="comment_content-3" type="radio" name="comment[content]" value="3"><!--
+      --><label for="comment_content-3">&#9733;</label><!--
+      --><input id="comment_content-4" type="radio" name="comment[content]" value="2"><!--
+      --><label for="comment_content-4">&#9733;</label><!--
+      --><input id="comment_content-5" type="radio" name="comment[content]" value="1"><!--
+      --><label for="comment_content-5">&#9733;</label>
+    </p>
+
+
+
 						</span>
 					</div>
 					<div class="panel-body">
@@ -95,3 +160,21 @@
 
 </div><!-- /container -->
 
+
+<script>
+	$("#comment_content-5").on('click',function(){
+		$("#comment_score")[0].value = 1
+	});
+	$("#comment_content-4").on('click',function(){
+		$("#comment_score")[0].value = 2
+	});
+	$("#comment_content-3").on('click',function(){
+		$("#comment_score")[0].value = 3
+	});
+	$("#comment_content-2").on('click',function(){
+		$("#comment_score")[0].value = 4
+	});
+	$("#comment_content-1").on('click',function(){
+		$("#comment_score")[0].value = 5
+	});
+</script>
