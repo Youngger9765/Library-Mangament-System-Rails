@@ -78,7 +78,7 @@ class User < ApplicationRecord
           )
           user.save!
         else
-          return nil, alert: "請用均一帳號"
+          return nil
         end
       end
     end
