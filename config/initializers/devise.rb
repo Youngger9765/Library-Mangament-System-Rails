@@ -277,7 +277,8 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, Settings.google_oauth2_app_id, Settings.google_oauth2_secret, 
     {
       scope: "email,profile,offline",
-      prompt: "select_account consent"
+      prompt: "select_account consent",
+      hd: 'junyiacademy.org'
     }
 
 
