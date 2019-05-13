@@ -1,7 +1,7 @@
 defaults: &defaults
   app_name: "demotest"
-  google_oauth2_app_id: ""
-  google_oauth2_secret: ""
+  google_oauth2_app_id: "685994272380-bdl4gih727juekice9tgk1b4ung955qb.apps.googleusercontent.com"
+  google_oauth2_secret: "bg7hGChEpZFVXDXTz0a-kRKC"
 
 development:
   <<: *defaults
