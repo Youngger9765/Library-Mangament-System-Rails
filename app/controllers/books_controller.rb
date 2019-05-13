@@ -90,4 +90,12 @@ class BooksController < ApplicationController
 		@book.destroy
 		redirect_to admins_main_path
 	end
+
+	def add_book_img_url
+		@book = Book.find(params[:book_id])
+		@book.picture_url = params[:book][:picture_url]
+		@book.save!
+
+		redirect_to book_path(@book)
+	end
 end

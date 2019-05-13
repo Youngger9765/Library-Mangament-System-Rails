@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   resources :books do
     get :create_comment
     get :delete_comment
+    get :add_book_img_url
     patch :issue
   end
 
