@@ -58,8 +58,6 @@ class User < ApplicationRecord
           registered_user[:img_url] = data["image"]
         end
 
-        raise
-
         if registered_user[:uid].blank?
           registered_user[:uid] = access_token.uid
         end
