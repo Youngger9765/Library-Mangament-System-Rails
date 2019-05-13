@@ -1,0 +1,16 @@
+defaults: &defaults
+  app_name: "demotest"
+  google_oauth2_app_id: ""
+  google_oauth2_secret: ""
+
+development:
+  <<: *defaults
+  domain: "http:/localhost:3000" #最後 "/" 要拿掉
+
+
+test:
+  <<: *defaults
+
+production:
+  google_oauth2_app_id: <%= ENV["google_oauth2_app_id"] %>
+  google_oauth2_secret: <%= ENV["google_oauth2_secret"] %>
