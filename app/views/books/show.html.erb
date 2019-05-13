@@ -40,10 +40,10 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>書名</th>
-			<th>剩餘幾本</th>
-			<th></th>
-			<th>目前正在閱讀</th>
+			<th style="width: 500px">書名</th>
+			<th style="width: 100px">剩餘幾本</th>
+			<th style="width: 50px"></th>
+			<th style="width: 300px">目前正在閱讀</th>
 		<tr>
 	</thead>
 	<tbody>
@@ -76,7 +76,7 @@
 			<td>
 				<ul>
 					<% @book.users.each do |u|%>
-						<li> <%= u.email %></li>
+						<li> <%= u.name or u.email %></li>
 					<%end%>
 				</ul>
 			</td>
