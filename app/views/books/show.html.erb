@@ -109,7 +109,7 @@
 			<div class="col-sm-5">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<strong><%=comment.user.name or comment.user.email%></strong> <span class="text-muted"><%=comment.created_at%></span> 
+						<strong><%=comment.user.name or comment.user.email%></strong> <span class="text-muted"><%=comment.created_at.in_time_zone("Taipei").strftime("%Y/%m/%d %H:%M")%></span> 
 						<span class="pull-right">
 							<% if comment.score.present?%>
 								<span style="color: orange;">
