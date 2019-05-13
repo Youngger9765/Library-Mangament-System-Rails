@@ -46,19 +46,21 @@ class User < ApplicationRecord
     else
       registered_user = User.where(:email => access_token.info.email).first
       if registered_user
-        if registered_user[:name].nil?
+        if registered_user[:name].blank?
           registered_user[:name] = data["name"]
         end
 
-        if registered_user[:provider].nil?
+        if registered_user[:provider].blank?
           registered_user[:provider] = access_token.provider
         end
 
-        if registered_user[:img_url].nil?
+        if registered_user[:img_url].blank?
           registered_user[:img_url] = data["image"]
         end
 
-        if registered_user[:uid].nil?
+        raise
+
+        if registered_user[:uid].blank?
           registered_user[:uid] = access_token.uid
         end
 
