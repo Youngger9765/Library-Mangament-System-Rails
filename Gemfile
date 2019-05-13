@@ -46,6 +46,12 @@ gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin_rollincode', '~> 1.0'
 gem 'ransack'
 
+gem 'settingslogic' #管理我們的秘密key
+gem 'omniauth-google-oauth2'
+gem 'activerecord-session_store'
+
+
+
 
 
 group :development, :test do

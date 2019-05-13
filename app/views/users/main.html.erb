@@ -2,7 +2,13 @@
 
 <div id = 'maincontainer'>
 
-<h3> <%= @user.email if @user.email %>  已經借了：</h3>
+<h3> 
+	<span>
+		<img src="<%=@user.img_url%>" alt="">
+		<%=@user.name if @user.name %>	(<%= @user.email if @user.email %>)
+	  已經借了：
+	</span> 
+</h3>
 
 <table class= "table">
 	<tbody>
