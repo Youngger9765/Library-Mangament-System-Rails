@@ -45,7 +45,19 @@
         <% @books.each do |book| %>
             <tr>
                 <td>
-                    <%= book.title %>
+                    <div class="pull-left">
+                        <% if book.comments.average(:score).present?%>
+                            <span style="color: orange;">
+                                <% book.comments.average(:score).to_i.times do%>
+                                    &#9733;
+                                <%end%>
+                            </span>
+                        <%end%>
+                    </div>
+                    <br>
+                    <div>
+                        <%= book.title %>
+                    </div>
                 </td>
                 <td>
                     <%= book.issue_count%>
