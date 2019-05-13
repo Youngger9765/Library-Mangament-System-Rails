@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   end
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # devise_for :admins
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
 
   # get '/users/auth/google_oauth2/callback', to: 'users/omniauth_callbacks#google_oauth2'
 
