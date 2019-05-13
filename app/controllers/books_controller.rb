@@ -30,6 +30,14 @@ class BooksController < ApplicationController
   		redirect_to book_path(@book)
   	end
 
+  	def delete_comment
+  		@book = Book.find(params[:book_id])
+  		comment = Comment.find(params[:comment_id])
+  		comment.delete
+
+  		redirect_to book_path(@book)
+  	end
+
 	def issue
 		@book = Book.find(params[:book_id])
 		if @book.avail_for_issue
