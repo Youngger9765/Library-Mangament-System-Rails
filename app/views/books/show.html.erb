@@ -100,6 +100,15 @@
 	<%end%>
 </div>
 
+<h2>Tag</h2>
+<div>
+	<%= form_for @book , url: book_add_tag_path(@book), method: :GET do |f|%>
+		<%= f.text_field :tag_list %>
+		<%=f.submit "tag"%>
+	<%end%>
+</div>
+
+
 <br>
 <br>
 

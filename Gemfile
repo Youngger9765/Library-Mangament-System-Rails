@@ -51,6 +51,7 @@ gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 
 gem "font-awesome-rails"
+gem 'acts-as-taggable-on', '~> 6.0'
 
 
 

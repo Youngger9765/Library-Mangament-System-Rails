@@ -34,10 +34,17 @@ Rails.application.routes.draw do
   # get '/books/deleteshow', to: "books#deleteshow"
   # get '/books/delete', to: 'books#delete'
 
+
   resources :books do
     get :create_comment
     get :delete_comment
     get :add_book_img_url
+    get :add_tag
+
+    collection do
+     get :tagged
+    end
+
     patch :issue
   end
 

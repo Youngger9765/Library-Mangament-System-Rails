@@ -98,4 +98,23 @@ class BooksController < ApplicationController
 
 		redirect_to book_path(@book)
 	end
+
+	def add_tag
+		@book = Book.find(params[:book_id])
+		
+		if params[:book][:tag_list].present? && !@book.tag_list.include?(params[:book][:tag_list])
+			@book.tag_list.add(params[:book][:tag_list])
+			@book.save!
+		end
+
+		redirect_to book_path(@book)
+	end
+
+	def tagged
+	  if params[:book][:tag].present?
+	    @books = Book.tagged_with(params[:book][:tag])
+	  else
+	    @books = Book.all
+	  end
+	end
 end
