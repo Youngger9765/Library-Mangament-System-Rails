@@ -50,6 +50,8 @@ gem 'settingslogic' #管理我們的秘密key
 gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 
+gem "font-awesome-rails"
+
 
 
 
