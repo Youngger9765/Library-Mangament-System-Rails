@@ -30,7 +30,13 @@
 	</tbody>
 
 </table>
-<%= button_to "借書", books_path, :class => "button btn-success", :method => :get %>
+<%= button_to "借書", books_path, :class => "btn-lg btn-success", :method => :get %>
+
+<br>
+<% random_book = Book.where.not(:no_copies => 0).where.not(:id=> current_user.books.ids).sample%>
+<%= button_to book_path(random_book), :class => "btn-lg btn-primary", :method => :get do %>
+	隨機推薦
+<%end%>
 
 
 </div>
