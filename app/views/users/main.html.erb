@@ -33,10 +33,34 @@
 <%= button_to "借書", books_path, :class => "btn-lg btn-success", :method => :get %>
 
 <br>
-<% random_book = Book.where.not(:no_copies => 0).where.not(:id=> current_user.books.ids).sample%>
-<%= button_to book_path(random_book), :class => "btn-lg btn-primary", :method => :get do %>
-	隨機推薦
-<%end%>
+
+<div>
+	<div class="row">
+		<div class="col-md-3">
+			<%= link_to '隨機推薦', recommend_book_btn_books_url, :remote => true, :data => { :type => :json }, :class => "ajax_update btn-lg btn-primary" %>
+		</div>
+		<div class="col-md-8">
+			<div id="recommend_area">
+				<a href=""></a>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 </div>
+
+<script>
+$(document).ready(function() {
+    $('.ajax_update').on("ajax:success", function(event, data) {
+    	if (data.length >0) {
+	        var recommend_area = $('#recommend_area a');
+	        recommend_area.html(data[1])
+	        recommend_area.attr({
+			    "href" : "/books/"+data[0],
+			    "style": "color:blue; font-size: 30px;"
+			  });
+        }
+    });
+});
+</script>

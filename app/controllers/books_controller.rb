@@ -133,6 +133,15 @@ class BooksController < ApplicationController
 	  redirect_to books_path(:tag => true, :books_ids=>@books_ids)
 	end
 
+	def recommend_book_btn
+		book = Book.where.not(:no_copies => 0).where.not(:id=> current_user.books.ids).sample
+		book_id = book.id
+		book_title = book.title
+		respond_to do |format|
+		  format.js { render :json => [book_id,book_title], :callback => params[:callback] }
+		end
+	end
+
 
 
 

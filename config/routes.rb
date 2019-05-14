@@ -41,8 +41,10 @@ Rails.application.routes.draw do
     get :add_book_img_url
     get :add_tag
 
+
     collection do
      get :tagged
+     get :recommend_book_btn
     end
 
     patch :issue
