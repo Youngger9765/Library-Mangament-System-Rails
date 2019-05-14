@@ -5,11 +5,16 @@ class BooksController < ApplicationController
 	def	index
 		@q = Book.ransack(params[:q])
 		@books = @q.result(distinct: true)
+
+		if params[:tag] == "true"
+			@books = @books.find(params[:books_ids])
+		end
 	end
 
 	def show
 		@book =  Book.find(params[:id])
 		@new_comment =Comment.new(:book_id => @book.id, :user_id => current_user.id)
+		@tags_name_array = ActsAsTaggableOn::Tag.all
   	end
 
   	def create_comment
@@ -101,20 +106,41 @@ class BooksController < ApplicationController
 
 	def add_tag
 		@book = Book.find(params[:book_id])
-		
-		if params[:book][:tag_list].present? && !@book.tag_list.include?(params[:book][:tag_list])
-			@book.tag_list.add(params[:book][:tag_list])
+		tags = params[:book][:tag_items].reject { |t| t.empty? }
+
+		if tags.present?
+			@book.tags.delete_all
+
+			params[:book][:tag_items].each do |tag|
+				@book.tag_list.add(tag)
+			end
+
 			@book.save!
+
+			ActsAsTaggableOn::Tag.all.where(:taggings_count => 0).delete_all
 		end
 
 		redirect_to book_path(@book)
 	end
 
 	def tagged
-	  if params[:book][:tag].present?
-	    @books = Book.tagged_with(params[:book][:tag])
+	  if params[:tag].present?
+	    @books_ids = Book.tagged_with(params[:tag]).ids
 	  else
 	    @books = Book.all
 	  end
+
+	  redirect_to books_path(:tag => true, :books_ids=>@books_ids)
 	end
+
+
+
+
+	private
+
+	def book_params
+	  params.require(:book).permit({ tag_items: [] })
+	end
+
+
 end

@@ -53,7 +53,7 @@
             </th>
             <th style="width: 150px">剩餘幾本</th>
             <th style="width: 150px;"><%= sort_link(@q, :issue_count, '借閱次數') %><i class="fa fa-sort"></i></th>
-            <th style="width:  50px"></th>
+            <th>tag</th>
         </tr>
     </thead>
     <tbody>
@@ -71,24 +71,23 @@
                     </div>
                     <br>
                     <div>
-                        <%= book.title %>
+                        <%= link_to book_path(book.id) do %>
+                            <%= book.title %>
+                        <%end%>
                     </div>
                 </td>
-                <td><%=book.no_copies%></td>
+                <td>
+                    <%=book.no_copies%>
+                </td>
                 <td>
                     <%= book.issue_count%>
                 </td>
                 <td>
-                    <%= link_to book_path(book.id),  :class=>"btn btn-default" do %>
-                        show
-                    <%end%>
-                </td>
-                <td>
-                    <p>
-                        <% book.tag_list.each do |tag| %>
-                            <%= link_to tag, tagged_path(tag: tag) %>
-                        <% end %>
-                    </p>
+                    <% book.tag_list.each do |tag| %>
+                        <%= link_to tagged_books_path(tag: tag), :class=>"btn btn-warning" do%>
+                            <%=tag%>
+                        <%end%>
+                    <% end %>
                 </td>
             </tr>
         <% end %>

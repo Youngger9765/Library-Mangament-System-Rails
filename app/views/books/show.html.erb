@@ -33,6 +33,10 @@
 	input[type="radio"]:checked ~ label {
 	  color: orange;
 	}
+
+	.select2, .select2-container {
+		width: 100%;
+	}
 </style>
 
 
@@ -101,11 +105,14 @@
 </div>
 
 <h2>Tag</h2>
-<div>
-	<%= form_for @book , url: book_add_tag_path(@book), method: :GET do |f|%>
-		<%= f.text_field :tag_list %>
-		<%=f.submit "tag"%>
-	<%end%>
+<div class="row select2_row">
+  <div class="col-sm-12 offset-sm-2">
+    <%= simple_form_for @book, url: book_add_tag_path(@book), method: :GET  do |f_tag| %>
+		<%= f_tag.error_notification %>
+		<%= f_tag.input :tag_items, as: :select, collection: @tags_name_array, label_method: :name,value_method: :name, input_html: {multiple: true} %>
+		<%= f_tag.submit "update tag", class: "btn-primary"%>
+    <% end %>
+  </div>
 </div>
 
 
@@ -147,7 +154,6 @@
 							刪除
 						<%end%>
 					</div><!-- /panel-body -->
-					
 				</div><!-- /panel panel-default -->
 			</div><!-- /col-sm-5 -->
 
@@ -168,21 +174,19 @@
 						<strong><%=current_user.email%></strong>
 						<span class="pull-right">
 						<%= f.number_field :score ,max:"5",min:"1", :class=>"rating hide"%>
-						
-							
 
-    <p class="clasificacion">
-       <input id="comment_content-1" type="radio" name="comment[content]" value="5"><!--
-      --><label for="comment_content-1">&#9733;</label><!--
-      --><input id="comment_content-2" type="radio" name="comment[content]" value="4"><!--
-      --><label for="comment_content-2">&#9733;</label><!--
-      --><input id="comment_content-3" type="radio" name="comment[content]" value="3"><!--
-      --><label for="comment_content-3">&#9733;</label><!--
-      --><input id="comment_content-4" type="radio" name="comment[content]" value="2"><!--
-      --><label for="comment_content-4">&#9733;</label><!--
-      --><input id="comment_content-5" type="radio" name="comment[content]" value="1"><!--
-      --><label for="comment_content-5">&#9733;</label>
-    </p>
+					    <p class="clasificacion">
+					       <input id="comment_content-1" type="radio" name="comment[content]" value="5"><!--
+					      --><label for="comment_content-1">&#9733;</label><!--
+					      --><input id="comment_content-2" type="radio" name="comment[content]" value="4"><!--
+					      --><label for="comment_content-2">&#9733;</label><!--
+					      --><input id="comment_content-3" type="radio" name="comment[content]" value="3"><!--
+					      --><label for="comment_content-3">&#9733;</label><!--
+					      --><input id="comment_content-4" type="radio" name="comment[content]" value="2"><!--
+					      --><label for="comment_content-4">&#9733;</label><!--
+					      --><input id="comment_content-5" type="radio" name="comment[content]" value="1"><!--
+					      --><label for="comment_content-5">&#9733;</label>
+					    </p>
 
 
 
@@ -217,4 +221,14 @@
 	$("#comment_content-1").on('click',function(){
 		$("#comment_score")[0].value = 5
 	});
+
+
+// select2
+
+	$( ".select2_row #book_tag_items" ).select2({
+	    theme: "bootstrap",
+	    tags: true
+	});
+	$(".select2").css( "width","80%" );
+
 </script>

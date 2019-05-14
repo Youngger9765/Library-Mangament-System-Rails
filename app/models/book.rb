@@ -9,10 +9,13 @@ class Book < ApplicationRecord
 	# has_many :issue_logs
 	# has_many :users, through: :issue_logs
 
-	private
+	def tag_items
+		tags.map(&:name)
+	end
 
-	def book_params
-	  params.require(:book).permit(:tag_list)
+	def tag_items=(names)
+		self.tags = names.map{|item|
+		Tag.where(name: item.strip).first_or_create! unless item.blank?}.compact!
 	end
 
 end

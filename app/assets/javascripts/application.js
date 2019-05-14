@@ -15,5 +15,8 @@
 //= require rails-ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require select2-full
+//= require select2_locale_zh-TW
+//= require bootstrap
 //= require_tree .
 
