@@ -66,10 +66,14 @@
 			<td><%= @book.no_copies %></td>
 			<td>
 				<%if current_user.books.ids.include?(@book.id)%>
-					<div class="btn btn-primary">已借</div>
+					<div class="btn btn-primary disable">已借</div>
 				<%else%>
-					<%= link_to book_issue_path(@book), :class => "btn btn-success",:method => :patch do%>
-						借書
+					<% if @book.no_copies == 0 %>
+						
+					<%else%>
+						<%= link_to book_issue_path(@book), :class => "btn btn-success",:method => :patch do%>
+							借書
+						<%end%>
 					<%end%>
 				<%end%>
 			</td>

@@ -51,7 +51,8 @@
             <th style="width: 400px;">
                 書名
             </th>
-            <th style="width: 200px;"><%= sort_link(@q, :issue_count, '借閱次數') %></th>
+            <th style="width: 150px">剩餘幾本</th>
+            <th style="width: 150px;"><%= sort_link(@q, :issue_count, '借閱次數') %></th>
             <th style="width:  50px"></th>
         </tr>
     </thead>
@@ -73,6 +74,7 @@
                         <%= book.title %>
                     </div>
                 </td>
+                <td><%=book.no_copies%></td>
                 <td>
                     <%= book.issue_count%>
                 </td>
