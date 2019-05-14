@@ -52,7 +52,7 @@ gem 'activerecord-session_store'
 
 gem "font-awesome-rails"
 gem 'acts-as-taggable-on', '~> 6.0'
-gem 'select2-rails', '~> 4.0', '>= 4.0.3'
+gem 'select2-rails', '~> 4.0', '<= 4.0.2'
 
 
 
