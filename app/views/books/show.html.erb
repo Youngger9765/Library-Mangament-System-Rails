@@ -95,7 +95,7 @@
 <div>
 	<% if @book.picture_url.blank?%>
 		<%= form_for @book, :url => book_add_book_img_url_path(@book), :method=> :GET do |f| %>
-			<h5>營運組很辛苦！如果您有看到這行字，代表這本書還沒有照片，請到 google 照片的連結，複製貼上即可，謝謝您的貢獻</h5>
+			<h5>營運組很辛苦！如果您有看到這行字，代表這本書還沒有照片，請 <a style="color:blue;" target="_blank" href="https://www.google.com/search?q=<%=@book.title%>&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjt4f3m2JriAhUL7rwKHSxPB08Q_AUIDigB&cshid=1557825672093608&biw=1420&bih=696">google 照片的連結</a> ，複製貼上即可，謝謝您的貢獻</h5>
 			<%=f.text_field :picture_url ,:style=> "width:100%"%>
 			<%=f.submit "新增照片連結" %>
 		<%end%>
