@@ -171,7 +171,7 @@
 			<div class="col-sm-5">
 				<div class="panel panel-default">
 					<div class="panel-heading" id="stars-wrapper">
-						<strong><%=current_user.email%></strong>
+						<strong><%=current_user.name or current_user.email%></strong>
 						<span class="pull-right">
 						<%= f.number_field :score ,max:"5",min:"1", :class=>"rating hide"%>
 
