@@ -46,14 +46,18 @@
 </div>
 
 
-<div class="col-md-15">
-    <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
-        <%= link_to tag.name, tagged_books_path(tag: tag.name), :class => css_class %>
-    <% end %>
+<h3>Tags</h3>
+<div class="col-md-15 container">
+    <div class="col-md-6" style="background-color: white;">
+        <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+            <%= link_to tag.name, tagged_books_path(tag: tag.name), :class => css_class %>
+        <% end %>
+    </div>
+    
 </div>
 
 
-
+<hr>
 
 
 <table id="example" class="table table-striped">

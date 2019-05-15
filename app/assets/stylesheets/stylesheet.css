@@ -3,7 +3,6 @@
 
 @font-face {
 	font-family: 'Barlow Semi Condensed';
-	src: url(BarlowSemiCondensed-Regular.ttf);
 }
 
 @font-face {
@@ -15,7 +14,6 @@ body {
 	margin: 0;
 	width: 100vw;
 	overflow-x: hidden;
-	background-image: url(background2.jpg);
 }
 
 p, h3, h4 {
