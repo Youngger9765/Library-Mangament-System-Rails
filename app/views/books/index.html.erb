@@ -1,3 +1,11 @@
+<style>
+    .css1 { font-size: 2em; }
+    .css2 { font-size: 3em; }
+    .css3 { font-size: 4em; }
+    .css4 { font-size: 5em; }
+</style>
+
+
 <div class="row container">
     <div class="col-md-4">
         <div class="row">
@@ -37,18 +45,26 @@
 
 </div>
 
-<div class="container" style="margin: 30px;">
-    <%= search_form_for @q do |f| %>
-        <%= f.label :title_cont %>
-        <%= f.search_field :title_cont %>
-        <%= f.submit %>
+
+<div class="col-md-15">
+    <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+        <%= link_to tag.name, tagged_books_path(tag: tag.name), :class => css_class %>
     <% end %>
 </div>
+
+
+
+
 
 <table id="example" class="table table-striped">
     <thead>
         <tr>
             <th style="width: 400px;">
+                <%= search_form_for @q do |f| %>
+                    <%= f.label :title_cont %>
+                    <%= f.search_field :title_cont %>
+                    <%= f.submit %>
+                <% end %>
                 書名
             </th>
             <th style="width: 150px">剩餘幾本</th>

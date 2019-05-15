@@ -9,6 +9,8 @@ class BooksController < ApplicationController
 		if params[:tag] == "true"
 			@books = @books.find(params[:books_ids])
 		end
+
+		@tags = Book.tag_counts_on(:tags)
 	end
 
 	def show
@@ -141,8 +143,6 @@ class BooksController < ApplicationController
 		  format.js { render :json => [book_id,book_title], :callback => params[:callback] }
 		end
 	end
-
-
 
 
 	private
