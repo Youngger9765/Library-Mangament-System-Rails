@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_many :comments
 
+  has_many :issue_logs
+
   validates :email, presence: true, if: :domain_check
 
 

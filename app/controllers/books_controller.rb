@@ -136,7 +136,19 @@ class BooksController < ApplicationController
 	end
 
 	def recommend_book_btn
-		book = Book.where.not(:no_copies => 0).where.not(:id=> current_user.books.ids).sample
+		user_issue_book_ids = current_user.issue_logs.pluck(:book_id).uniq
+		user_issue_book_tags = ActsAsTaggableOn::Tagging.where(:taggable_type => "Book").where(:taggable_id => user_issue_book_ids).pluck(:tag_id).uniq
+		user_issue_book_tags_all_books = ActsAsTaggableOn::Tagging.where(:tag_id => user_issue_book_tags).pluck(:taggable_id).uniq
+		the_same_tag_never_issue_books = user_issue_book_tags_all_books - user_issue_book_ids
+
+		user_can_issue_books = Book.where.not(:no_copies => 0).where.not(:id=> current_user.books.ids)
+
+		if the_same_tag_never_issue_books.size == 0
+			book = user_can_issue_books.sample
+		else
+			book = user_can_issue_books.where(:id=> the_same_tag_never_issue_books).sample
+		end
+
 		book_id = book.id
 		book_title = book.title
 		respond_to do |format|

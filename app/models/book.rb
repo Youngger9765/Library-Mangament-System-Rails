@@ -6,7 +6,7 @@ class Book < ApplicationRecord
 
 	acts_as_taggable_on :tags
 
-	# has_many :issue_logs
+	has_many :issue_logs
 	# has_many :users, through: :issue_logs
 
 	def tag_items
