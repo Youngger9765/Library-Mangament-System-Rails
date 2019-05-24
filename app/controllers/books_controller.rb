@@ -52,6 +52,8 @@ class BooksController < ApplicationController
 			IssueLog.create(:user => current_user, :book => @book, :action => "借書")
 			@book.no_copies = @book.no_copies - 1
 
+			post_slack_message(@book,"借了",current_user)
+
 			if @book.no_copies < 1
 				@book.avail_for_issue = false
 			end
@@ -72,8 +74,24 @@ class BooksController < ApplicationController
 			@book.save
 
 			IssueLog.create(:user_id => current_user.id, :book_id => @book.id, :action => "還書")
+
+			post_slack_message(@book,"還了",current_user)
 		end
 		redirect_to users_main_path(current_user)
+	end
+
+	def post_slack_message(book,activity,user)
+		conn = Faraday.new(url: "https://hooks.slack.com/services/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")
+
+		current_user_name = user.name || user.email
+		activity_word = activity
+		book_title = book.title
+
+		text_word = current_user_name + " " + activity_word + ": " + book_title
+		conn.post do |req|
+		  req.headers['Content-Type'] = 'application/json'
+		  req.body = { text: text_word }.to_json
+		end
 	end
 	
 	def new

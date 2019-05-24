@@ -294,6 +294,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
   devise
+  faraday
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
