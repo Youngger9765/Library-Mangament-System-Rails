@@ -13,20 +13,22 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse clear" id = "navbar" >
+    <nav class="navbar navbar-inverse clear" id="navbar" >
         <div class="container-fluid">
             <% if user_signed_in? %>
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <%= link_to_unless_current("個人借書", root_path) %>
+                    <li>
+                        <%= link_to root_path, :class=>"btn btn-default" do %>
+                            個人借書
+                        <%end%>
                     </li>
                     <li>
-                        <%= link_to books_path, :method => :get do %>
-                            <p>館藏</p>
+                        <%= link_to books_path, :method => :get, :class=>"btn btn-default"  do %>
+                            館藏
                         <%end%>
                     </li>
                     <%if current_user && current_user.is_admin?%>
-                        <li><a href="/admin">後台管理</a></li>
+                        <li><a href="/admin" class="btn btn-default">後台管理</a></li>
                     <%end%>
                 </ul>
             <%end%>
@@ -34,13 +36,13 @@
                 <div id = 'sharedlinks' class='pull-right'>
                     <% if user_signed_in? %>
                         <li>
-                            <%= link_to destroy_user_session_path, method: :delete, :class=>"btn btn-default"  do %>
+                            <%= link_to destroy_user_session_path, method: :delete, :class=>"btn btn-warning"  do %>
                                 logout
                             <%end%>
                         </li>
                     <% else %>
                         <li>
-                            <%= link_to new_user_session_path, :class=>"btn btn-default" do  %>  
+                            <%= link_to new_user_session_path, :class=>"btn btn-success" do  %>  
                                 login
                             <%end%>
                         </li>
