@@ -2,42 +2,129 @@
 	.user_photo {
 		width: 7%;
 	}
+
+html {
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+h5 {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+    margin: 0;
+}
+
+.card-container {
+    padding-top: 15px;
+}
+
+.card {
+    font-size: 1em;
+    overflow: hidden;
+    padding: 0;
+    border: none;
+    border-radius: .28571429rem;
+    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+}
+
+.card-block {
+    font-size: 1em;
+    position: relative;
+    margin: 0;
+    padding: 1em;
+    border: none;
+    border-top: 1px solid rgba(34, 36, 38, .1);
+    box-shadow: none;
+}
+
+.card-img-top {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.card-title {
+    font-size: 1.28571429em;
+    font-weight: 700;
+    line-height: 1.2857em;
+}
+
+.card-text {
+    clear: both;
+    margin-top: .5em;
+    color: rgba(0, 0, 0, .68);
+}
+
+.card-footer {
+    font-size: 1em;
+    position: static;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    padding: .75em 1em;
+    color: rgba(0, 0, 0, .4);
+    border-top: 1px solid rgba(0, 0, 0, .05) !important;
+    background: #fff;
+}
+
+.card-inverse .btn {
+    border: 1px solid rgba(0, 0, 0, .05);
+}
+
+.profile {
+    position: absolute;
+    top: -12px;
+    display: inline-block;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 25px;
+    height: 25px;
+    margin: 0;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+
+.profile-avatar {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.profile-inline {
+    position: relative;
+    top: 0;
+    display: inline-block;
+}
+
+.profile-inline ~ .card-title {
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: top;
+}
+
+.text-bold {
+    font-weight: 700;
+}
+
+.meta {
+    font-size: 1em;
+    color: rgba(0, 0, 0, .4);
+}
+
+.meta a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, .4);
+}
+
+.meta a:hover {
+    color: rgba(0, 0, 0, .87);
+}
 </style>
 
-<h2 id="pagetitle"> Profile </h2>
-
-<div id = 'maincontainer'>
-
-<h3> 
-	<span>
-		<img src="<%=@user.img_url%>" alt="" class="user_photo">
-		<%=@user.name if @user.name %>	(<%= @user.email if @user.email %>)
-	  已經借了：
-	</span> 
-</h3>
-
-<table class= "table">
-	<tbody>
-		<% @user.books.each do |book| %>
-		<tr>
-			<td>
-				<%= link_to book_path(book) do%>
-					<%= book.title %>
-				<%end%>
-			</td>
-			<td>
-				<%= UserBookShip.find_by(:user_id=> @user.id, :book_id=>book.id).created_at.in_time_zone("Taipei").strftime("%Y/%m/%d %H:%M")%>
-			</td>
-			<td>
-				<%= button_to "還書", return_path(id: book), :class => "button btn-warning", :method => :patch %>
-			</td>
-		</tr>
-		<% end %>
-	</tbody>
-
-</table>
-<%= button_to "借書", books_path, :class => "btn-lg btn-success", :method => :get %>
-
+<br>
+<br>
 <br>
 
 <div>
@@ -53,8 +140,72 @@
 	</div>
 </div>
 
+<h3> 
+	<span>
+		<img src="<%=@user.img_url%>" alt="" class="user_photo">
+		<%=@user.name if @user.name %>	(<%= @user.email if @user.email %>)
+	  已經借了：
+	</span> 
+</h3>
 
+
+<div class="row">
+    <% @user.books.each do |book| %>
+        <div class="card-container col-sm-6 col-md-4 col-lg-4 mt-4">
+            <div class="card">
+                <% if book.picture_url.blank?%>
+                    <img class="card-img-top" src="https://picsum.photos/200/150/?random">
+                <%else%>
+                    <img src="<%=book.picture_url%>" alt="" class="card-img-top">
+                <%end%>
+
+                <div class="card-block">
+                    <figure class="profile">
+                        <img src="https://picsum.photos/200/150/?random" class="profile-avatar" alt="">
+                    </figure>
+                    <h4 class="card-title mt-3">
+                        <%= link_to book_path(book.id) do %>
+                            <%= book.title %>
+                        <%end%>
+                    </h4>
+                    <div class="card-text">
+                        借閱日期：<%= UserBookShip.find_by(:user_id=> @user.id, :book_id=>book.id).created_at.in_time_zone("Taipei").strftime("%Y/%m/%d %H:%M")%>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <div class="col-md-8">
+                    	<small>
+	                        <% if book.comments.average(:score).present?%>
+	                            <span style="color: orange;">
+	                                <% book.comments.average(:score).to_i.times do%>
+	                                    &#9733;
+	                                <%end%>
+	                            </span>
+	                        <%end%>
+	                    </small>
+	                    <br>
+	                    <i class="fa fa-tags">
+	                        <% book.tag_list.each do |tag| %>
+	                            <%= link_to tagged_books_path(tag: tag), :class=>"btn btn-default btn-sm disable" do%>
+	                                <%=tag%>
+	                            <%end%>
+	                        <% end %>
+	                    </i>
+                    </div>
+                    <div class="col-md-4">
+                    	<%= button_to "還書", return_path(id: book), :class => "button btn-warning", :method => :patch %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%end%>
 </div>
+
+
+
+
+
 
 <script>
 $(document).ready(function() {
