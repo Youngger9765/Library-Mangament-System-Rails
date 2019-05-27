@@ -1,10 +1,16 @@
+<style>
+	.user_photo {
+		width: 7%;
+	}
+</style>
+
 <h2 id="pagetitle"> Profile </h2>
 
 <div id = 'maincontainer'>
 
 <h3> 
 	<span>
-		<img src="<%=@user.img_url%>" alt="">
+		<img src="<%=@user.img_url%>" alt="" class="user_photo">
 		<%=@user.name if @user.name %>	(<%= @user.email if @user.email %>)
 	  已經借了：
 	</span> 
