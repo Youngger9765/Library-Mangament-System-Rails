@@ -155,10 +155,10 @@ h5 {
                 <% Book.order(issue_count: :DESC).limit(10).each do |book|%>
                     <div class="item">
                         <%= link_to book_path(book.id) do %>
-                            <h3>
+                            <h3 style="padding: 10px 100px 0 100px;">
                                 <%=book.title%> (<%=book.issue_count%>)
                             </h3>
-                            <img src="<%=book.picture_url || "https://picsum.photos/200/150/?random"%>" alt="Los Angeles" style="width:100%; max-height: 400px;">
+                            <img src="<%=book.picture_url || "https://picsum.photos/200/150/?random"%>" alt="Los Angeles" style="width:100%; max-height: 400px; padding: 30px;">
                         <%end%>
                     </div>
                 <%end%>
