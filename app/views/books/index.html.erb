@@ -77,12 +77,12 @@ h5 {
 
 .profile {
     position: absolute;
-    top: -12px;
+    top: -20px;
     display: inline-block;
     overflow: hidden;
     box-sizing: border-box;
-    width: 25px;
-    height: 25px;
+    width: 40px;
+    height: 40px;
     margin: 0;
     border: 1px solid #fff;
     border-radius: 50%;
@@ -204,7 +204,14 @@ h5 {
 
                 <div class="card-block">
                     <figure class="profile">
-                        <img src="https://picsum.photos/200/150/?random" class="profile-avatar" alt="">
+                        <% if book.users.size > 0%>
+                            <% book.users.each do |user|%>
+                                <img src="<%=user.img_url%>" alt="" class="profile-avatar">
+                            <%end%>
+                        <%else%>
+
+                        <%end%>
+                        
                     </figure>
                     <h4 class="card-title mt-3">
                         <%= link_to book_path(book.id) do %>
