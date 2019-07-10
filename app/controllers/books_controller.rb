@@ -79,7 +79,7 @@ class BooksController < ApplicationController
 
 			IssueLog.create(:user_id => current_user.id, :book_id => @book.id, :action => "還書")
 
-			# post_slack_message(@book,"還了",current_user)
+			post_slack_message(@book,"還了",current_user)
 		end
 		redirect_to users_main_path(current_user)
 	end
