@@ -31,8 +31,17 @@ class BooksController < ApplicationController
   			:user_id => @user.id,
   			:book_id => @book.id,
   			:content => content,
-  			:score => score)
-  		comment.save
+			:score => score
+		)
+		comment.save
+
+		if score != nil
+			activity = '留了一則留言(評分：' + score.to_s + ') 在：'
+		else
+			activity = '留了一則留言 在：'
+		end
+		
+		post_slack_message(@book, activity, current_user)
 
   		redirect_to book_path(@book)
   	end
