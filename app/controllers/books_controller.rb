@@ -5,8 +5,14 @@ class BooksController < ApplicationController
 	def	index
 		@q = Book.ransack(params[:q])
 		@books = @q.result(distinct: true)
+    @org_id = 1
 
 		if params[:tag] == "true"
+			@books = @books.find(params[:books_ids])
+		end
+
+		if params[:org_filter].present?
+      @org_id = params[:org_filter].to_i
 			@books = @books.find(params[:books_ids])
 		end
 
@@ -165,6 +171,19 @@ class BooksController < ApplicationController
 	  end
 
 	  redirect_to books_path(:tag => true, :books_ids=>@books_ids)
+	end
+
+	def org_filter
+	  if params[:org_filter].present?
+		  org_id = params[:org_filter]
+	  else
+	    org_id = 1
+	  end
+
+	  @org = Organization.find(org_id)
+	  @books_ids = @org.books.ids
+
+	  redirect_to books_path(:org_filter => org_id, :books_ids=>@books_ids)
 	end
 
 	def recommend_book_btn

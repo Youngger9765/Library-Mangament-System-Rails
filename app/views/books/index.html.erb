@@ -203,6 +203,20 @@
 </div>
 
 
+<h3>我想找這個單位的書</h3>
+<div class="col-md-15 container">
+    <div class="col-md-6" style="background-color: white;">
+        <% Organization.all.each do |org|%>
+            <% if org.id == @org_id%>
+                <% btn_style = "btn btn-lg btn-success" %>
+            <% else %>
+                <% btn_style = "btn btn-lg btn-default" %>
+            <% end %>
+            <%= link_to org.name, org_filter_books_path(org_filter: org.id), :class => btn_style %>
+        <% end %>
+    </div>
+</div>
+
 <hr>
 <%= search_form_for @q do |f| %>
 <%= f.label :title_cont %>
