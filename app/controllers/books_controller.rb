@@ -11,9 +11,10 @@ class BooksController < ApplicationController
 			@books = @books.find(params[:books_ids])
 		end
 
-		if params[:org_filter].present? && params[:books_ids].present?
+		if params[:org_filter].present?
       @org_id = params[:org_filter].to_i
-			@books = @books.find(params[:books_ids])
+      @org = Organization.find(@org_id)
+      @books = @org.books
 		end
 
 		@tags = Book.tag_counts_on(:tags)
@@ -181,9 +182,8 @@ class BooksController < ApplicationController
 	  end
 
 	  @org = Organization.find(org_id)
-	  @books_ids = @org.books.ids
 
-	  redirect_to books_path(:org_filter => org_id, :books_ids=>@books_ids)
+	  redirect_to books_path(:org_filter => org_id)
 	end
 
 	def recommend_book_btn
