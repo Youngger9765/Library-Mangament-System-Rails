@@ -9,6 +9,8 @@ class Book < ApplicationRecord
 	has_many :issue_logs
 	# has_many :users, through: :issue_logs
 
+	belongs_to :organization
+
 	def tag_items
 		tags.map(&:name)
 	end
