@@ -101,7 +101,7 @@ class BooksController < ApplicationController
 		book_title = book.title
 		book_org_name = book.organization.name
 
-		text_word = current_user_name + " " + activity_word + ": " + book_title + "(" + book_org_name + ")"
+		text_word = current_user_name + " " + activity_word + ": " + book_title + " (" + book_org_name + ")"
 		conn.post do |req|
 		  req.headers['Content-Type'] = 'application/json'
 		  req.body = { text: text_word }.to_json
