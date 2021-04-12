@@ -11,7 +11,7 @@ class BooksController < ApplicationController
 			@books = @books.find(params[:books_ids])
 		end
 
-		if params[:org_filter].present?
+		if params[:org_filter].present? && params[:books_ids].present?
       @org_id = params[:org_filter].to_i
 			@books = @books.find(params[:books_ids])
 		end
