@@ -5,18 +5,19 @@ class BooksController < ApplicationController
 	def	index
 		@q = Book.ransack(params[:q])
 		@books = @q.result(distinct: true)
-    @org_id = 1
+    	@org_id = 1
 
 		if params[:tag] == "true"
 			@books = @books.find(params[:books_ids])
 		end
 
 		if params[:org_filter].present?
-      @org_id = params[:org_filter].to_i
-      @org = Organization.find(@org_id)
-      @books = @org.books
+			@org_id = params[:org_filter].to_i
+			@org = Organization.find(@org_id)
+			@books = @org.books
 		end
 
+		@books = @books.page(params[:page]).per(50)
 		@tags = Book.tag_counts_on(:tags)
 	end
 
