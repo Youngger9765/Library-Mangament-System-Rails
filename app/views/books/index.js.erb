@@ -1,0 +1,7 @@
+$('#books_list').append('<%= j render(@books) %>');
+<% if @books.next_page %>
+  $('.pagination').replaceWith('<%= j paginate(@books) %>');
+<% else %>
+  $('.pagination').text("到底了")
+<% end %>
+<% sleep 1 %>

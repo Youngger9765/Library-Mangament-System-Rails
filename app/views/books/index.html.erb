@@ -238,48 +238,27 @@
 
 
 <div class="paginate">
-    <%= paginate @books %>
+    <%= paginate @books, :remote => true %>
 </div>
 
 
 <script>
     $(".carousel-inner .item").first().addClass("active");
+    
+    window.onscroll = function(ev) {
+        is_last_page = false
+        is_to_button = (window.innerHeight + window.scrollY) >= document.body.offsetHeight
+        url = $('.pagination [rel="next"]').attr('href')
 
+        if (!url) {
+            is_last_page = true
+        }
 
-    // $('#books_list').append('<%= j render(@books) %>'); <
-    // %
-    // if @books.next_page % >
-    //     $('.pagination').replaceWith('<%= j paginate(@books) %>'); <
-    // %
-    // else % >
-    //     $('.pagination').remove(); <
-    // % end % >
-    //     <
-    //     % sleep 1 % >
-
-
-    // is_last_page = false
-    // on_loading = false
-    // window.onscroll = function(ev) {
-    //     is_to_button = (window.innerHeight + window.scrollY) >= document.body.offsetHeight
-    //     url = $('.pagination [rel="next"]').attr('href')
-    //     console.log(is_last_page)
-    //     console.log(is_to_button)
-    //     console.log(url)
-
-
-    //     if (!url) {
-    //         is_last_page = true
-    //     }
-
-    //     if (is_to_button && !is_last_page) {
-    //         $.getScript(url)
-    //     } else if (is_to_button && is_last_page) {
-    //         $('.pagination').text("到底了")
-    //     }
-
-    //     <
-    //     % sleep 3 % >
-
-    // };
+        if (is_to_button && !is_last_page) {
+            $('.pagination').text("還有")
+            $.getScript(url)
+        } else if (is_to_button && is_last_page) {
+            $('.pagination').text("到底了")
+        }
+    };
 </script>
