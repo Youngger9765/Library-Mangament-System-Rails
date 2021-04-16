@@ -17,7 +17,7 @@ class BooksController < ApplicationController
 			@books = @org.books
 		end
 
-		@books = @books.page(params[:page]).per(2)
+		@books = @books.page(params[:page]).per(20)
 		@tags = Book.tag_counts_on(:tags)
 	end
 
