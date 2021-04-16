@@ -69,7 +69,9 @@ class User < ApplicationRecord
         return registered_user
 
       else
-        if data["email"].split("@").last == "junyiacademy.org"
+        # if data["email"].split("@").last == "junyiacademy.org"
+        email_domain_name = data["email"].split("@").last  
+        if APPROVED_DOMAINS.include?(email_domain_name)
           user = User.create(
             name: data["name"],
             provider:access_token.provider,
