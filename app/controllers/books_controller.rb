@@ -7,8 +7,8 @@ class BooksController < ApplicationController
 		@books = @q.result(distinct: true)
     	@org_id = 1
 
-		if params[:tag] == "true"
-			@books = @books.find(params[:books_ids])
+		if params[:tag].present?
+			@books = Book.tagged_with(params[:tag]).all
 		end
 
 		if params[:org_filter].present?
@@ -17,7 +17,7 @@ class BooksController < ApplicationController
 			@books = @org.books
 		end
 
-		@books = @books.page(params[:page]).per(20)
+		@books = @books.page(params[:page]).per(2)
 		@tags = Book.tag_counts_on(:tags)
 	end
 
@@ -166,13 +166,8 @@ class BooksController < ApplicationController
 	end
 
 	def tagged
-	  if params[:tag].present?
-	    @books_ids = Book.tagged_with(params[:tag]).ids
-	  else
-	    @books = Book.all
-	  end
-
-	  redirect_to books_path(:tag => true, :books_ids=>@books_ids)
+		tag = params[:tag]
+	  redirect_to books_path(:tag => tag)
 	end
 
 	def org_filter
