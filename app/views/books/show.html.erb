@@ -56,6 +56,7 @@
             <th style="width: 100px">剩餘幾本</th>
             <th style="width: 50px"></th>
             <th style="width: 300px">目前正在閱讀</th>
+            <th style="width: 50px">編輯</th>
         <tr>
     </thead>
     <tbody>
@@ -75,9 +76,9 @@
                     <%= @book.title %>
                 </div>
             </td>
-			<td>
-				<%= @book.organization.name%>
-			</td>
+            <td>
+                <%= @book.organization.name%>
+            </td>
             <td>
                 <%= @book.no_copies %>
             </td>
@@ -100,6 +101,11 @@
                     <li> <%= u.name or u.email %></li>
                     <%end%>
                 </ul>
+            </td>
+            <td>
+                <%if current_user.is_admin?%>
+                    <%= link_to "Edit", "/rails_admin/book/#{@book.id}/edit", :class => "btn btn-success"%>
+                <%end%>
             </td>
         </tr>
     </tbody>
