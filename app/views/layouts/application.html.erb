@@ -30,6 +30,8 @@
                 </li>
                 <%if current_user && current_user.is_admin?%>
                 <li><a href="/rails_admin" class="btn btn-default">後台管理</a></li>
+                <li><a href="/rails_admin/book/new" class="btn btn-default">後台-新書建立</a></li>
+                <li><a href="/rails_admin/book" class="btn btn-default">後台-館藏列表</a></li>
                 <%end%>
             </ul>
             <%end%>
