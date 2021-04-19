@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>eLib</title>
     <%= csrf_meta_tags %>
 
@@ -9,43 +10,43 @@
 
     <%= stylesheet_link_tag "stylesheet", media: 'all', 'data-turbolinks-track' => 'reload'%>
     <%= javascript_include_tag "js", 'data-turbolinks-track' => 'reload' %>
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <nav class="navbar navbar-inverse clear" id="navbar" >
+    <nav class="navbar navbar-inverse clear" id="navbar">
         <div class="container-fluid">
             <% if user_signed_in? %>
-                <ul class="nav navbar-nav">
-                    <li>
-                        <%= link_to root_path, :class=>"btn btn-default" do %>
-                            個人借書
-                        <%end%>
-                    </li>
-                    <li>
-                        <%= link_to books_path, :method => :get, :class=>"btn btn-default"  do %>
-                            館藏
-                        <%end%>
-                    </li>
-                    <%if current_user && current_user.is_admin?%>
-                        <li><a href="/admin" class="btn btn-default">後台管理</a></li>
+            <ul class="nav navbar-nav">
+                <li>
+                    <%= link_to root_path, :class=>"btn btn-default" do %>
+                    個人借書
                     <%end%>
-                </ul>
+                </li>
+                <li>
+                    <%= link_to books_path, :method => :get, :class=>"btn btn-default"  do %>
+                    館藏
+                    <%end%>
+                </li>
+                <%if current_user && current_user.is_admin?%>
+                <li><a href="/rails_admin" class="btn btn-default">後台管理</a></li>
+                <%end%>
+            </ul>
             <%end%>
             <ul class="nav navbar-nav navbar-right">
-                <div id = 'sharedlinks' class='pull-right'>
+                <div id='sharedlinks' class='pull-right'>
                     <% if user_signed_in? %>
-                        <li>
-                            <%= link_to destroy_user_session_path, method: :delete, :class=>"btn btn-warning"  do %>
-                                logout
-                            <%end%>
-                        </li>
+                    <li>
+                        <%= link_to destroy_user_session_path, method: :delete, :class=>"btn btn-warning"  do %>
+                        logout
+                        <%end%>
+                    </li>
                     <% else %>
-                        <li>
-                            <%= link_to new_user_session_path, :class=>"btn btn-success" do  %>  
-                                login
-                            <%end%>
-                        </li>
+                    <li>
+                        <%= link_to new_user_session_path, :class=>"btn btn-success" do  %>
+                        login
+                        <%end%>
+                    </li>
                     <% end %>
                 </div>
             </ul>
@@ -55,6 +56,7 @@
     <div class="container" style="margin:100px auto; width: 60%;">
         <%= yield %>
     </div>
-    
-  </body>
+
+</body>
+
 </html>

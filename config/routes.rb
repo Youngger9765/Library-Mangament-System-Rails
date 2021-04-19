@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :posts
   end
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount RailsAdmin::Engine => '/rails_admin', as: 'rails_admin'
   # devise_for :admins
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
 
