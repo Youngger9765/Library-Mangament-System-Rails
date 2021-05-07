@@ -35,7 +35,10 @@
                 分類：<%=book.genre%>
             </div>
             <div class="card-text">
-                書本介紹：<a href=<%=book.description_url%>> link </a>
+                書本介紹：
+                <% if book.description_url.exist?%>
+                <a href=<%=book.description_url%>> link </a>
+                <%end%>
 
             </div>
             <div class="card-text">
