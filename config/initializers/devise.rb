@@ -278,7 +278,6 @@ Devise.setup do |config|
     {
       scope: "email,profile,offline",
       prompt: "select_account consent",
-      hd: 'junyiacademy.org'
     }
 
 
