@@ -36,8 +36,8 @@
             </div>
             <div class="card-text">
                 書本介紹：
-                <% if book.description_url.exist? %>
-                    <a target="_blank" href="<%=book.description_url%>" > link </a>
+                <% if book.description_url.present? %>
+                <a target="_blank" href="<%=book.description_url%>"> link </a>
                 <%else%>
                 <%end%>
 
