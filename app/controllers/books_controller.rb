@@ -29,6 +29,11 @@ class BooksController < ApplicationController
 		@genres = Book.where.not(:genre => "").pluck(:genre).uniq
 	end
 
+	def books_list
+		@books = Book.all
+		@genres = Book.where.not(:genre => "").pluck(:genre).uniq
+	end
+
 	def show
 		@book =  Book.find(params[:id])
 		@new_comment =Comment.new(:book_id => @book.id, :user_id => current_user.id)

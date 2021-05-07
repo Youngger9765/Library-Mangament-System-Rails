@@ -40,13 +40,13 @@ Rails.application.routes.draw do
     get :delete_comment
     get :add_book_img_url
     get :add_tag
-
-
+    
     collection do
-     get :tagged
-     get :org_filter
-     get :genre_filter
-     get :recommend_book_btn
+      get :books_list
+      get :tagged
+      get :org_filter
+      get :genre_filter
+      get :recommend_book_btn
     end
 
     patch :issue

@@ -28,6 +28,11 @@
                     館藏
                     <%end%>
                 </li>
+                <li>
+                    <%= link_to books_list_books_path, :method => :get, :class=>"btn btn-default"  do %>
+                    館藏-列表
+                    <%end%>
+                </li>
                 <%if current_user && current_user.is_admin?%>
                 <li><a href="/rails_admin" class="btn btn-default">後台管理</a></li>
                 <li><a href="/rails_admin/book/new" class="btn btn-default">後台-新書建立</a></li>
