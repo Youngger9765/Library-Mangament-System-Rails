@@ -217,6 +217,20 @@
     </div>
 </div>
 
+<h3>我想找這個分類的書</h3>
+<div class="col-md-15 container">
+    <div class="col-md-6" style="background-color: white;">
+        <% @genres.each do |genre|%>
+        <% if genre == @genre_filter%>
+        <% btn_style = "btn btn-lg btn-success" %>
+        <% else %>
+        <% btn_style = "btn btn-lg btn-default" %>
+        <% end %>
+        <%= link_to genre, genre_filter_books_path(genre_filter: genre), :class => btn_style %>
+        <% end %>
+    </div>
+</div>
+
 <hr>
 <%= search_form_for @q do |f| %>
 <%= f.label :title_cont %>
@@ -244,7 +258,7 @@
 
 <script>
     $(".carousel-inner .item").first().addClass("active");
-    
+
     window.onscroll = function(ev) {
         is_last_page = false
         is_to_button = (window.innerHeight + window.scrollY) >= document.body.offsetHeight

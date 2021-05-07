@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     collection do
      get :tagged
      get :org_filter
+     get :genre_filter
      get :recommend_book_btn
     end
 

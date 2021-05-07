@@ -17,8 +17,16 @@ class BooksController < ApplicationController
 			@books = @org.books
 		end
 
+		if params[:genre_filter].present?
+			@books = Book.where.not(:genre => "").where(:genre => params[:genre_filter])
+			@genre_filter = params[:genre_filter]
+		else
+			@genre_filter = nil
+		end
+
 		@books = @books.page(params[:page]).per(20)
 		@tags = Book.tag_counts_on(:tags)
+		@genres = Book.where.not(:genre => "").pluck(:genre).uniq
 	end
 
 	def show
@@ -180,6 +188,14 @@ class BooksController < ApplicationController
 	  @org = Organization.find(org_id)
 
 	  redirect_to books_path(:org_filter => org_id)
+	end
+
+	def genre_filter
+	  if params[:genre_filter].present?
+		  genre_name = params[:genre_filter]
+	  end
+
+	  redirect_to books_path(:genre_filter => genre_name)
 	end
 
 	def recommend_book_btn
