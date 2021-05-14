@@ -115,7 +115,7 @@ class BooksController < ApplicationController
 	end
 
 	def post_slack_message(book,activity,user)
-		conn = Faraday.new(url: "https://hooks.slack.com/services/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")
+		conn = Faraday.new(url: "https://hooks.slack.com/services/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")
 
 		current_user_name = user.name || user.email
 		activity_word = activity
