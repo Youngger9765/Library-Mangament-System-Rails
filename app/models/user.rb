@@ -15,7 +15,7 @@ class User < ApplicationRecord
   validates :email, presence: true, if: :domain_check
 
 
-  APPROVED_DOMAINS = ["junyiacademy.org","teach4taiwan.org","kistschool.org"]
+  APPROVED_DOMAINS = ["junyiacademy.org","teach4taiwan.org","kistschool.org", "chengzhiedu.org"]
 
   def domain_check
     unless APPROVED_DOMAINS.any? { |word| email.end_with?(word)}
